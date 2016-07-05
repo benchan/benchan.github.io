@@ -32,5 +32,8 @@ $(function(){
     $('#record').on('click', function(){
         recognition.start(); 
     });
+    $('#stop').on('click', function(){
+        recognition.stop();
+    });
 });
 
