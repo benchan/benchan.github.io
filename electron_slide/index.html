@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+
+
+
+
+
+
+
+
+
+			<div class="slides">
+				<section>
+				  <h1>Electronについて</h1>
+				  <p>horie</p>
+				</section>
+
+				<section>
+				  <h1>Electron知ってる?</h1>
+				</section>
+
+
+                <section>
+                  <ul>
+                    <li>クロスプラットフォームに対応 MAC・Win・Linux</li>
+                    <li>HTML5やJavaScriptベース</li>
+                    <li>Chromiumをベース新しいAPIが使える</li>
+                    <li>大手も採用している</li>
+                  </ul>
+                </section>
+
+
+
+                <section>
+                    <h3>採用企業</h3>
+                    <ul>
+                        <li>Github atom（エディタ）https://atom.io/</li>
+                        <li>Slack（チャット）https://slack.com/</li>
+                        <li>Microsoft Visual studi code （エディタ）https://code.visualstudio.com/</li>
+                        <li>Kitematic, wordpress, Brave browser</li>
+                    </ul>
+
+                
+                </section>
+
+
+                <section>
+<h3>デモ</h3>                
+                    <pre><code>
+# Clone the Quick Start repository
+$ git clone https://github.com/electron/electron-quick-start
+
+# Go into the repository
+$ cd electron-quick-start
+
+# Install the dependencies and run
+$ npm install && npm start 
+                    </code></pre>
+                
+                </section>
+
+
+
+
+
+                <section>
+                    <h4>main.js</h4>
+                    <pre>
+    <code>
+   const electron = require('electron')
+// Module to control application life.
+const app = electron.app
+// Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow
+
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow
+
+function createWindow () {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({width: 800, height: 600})
+
+  // and load the index.html of the app.
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
+
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools()
+
+  // Emitted when the window is closed.
+  mainWindow.on('closed', function () {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    mainWindow = null
+  })
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', createWindow)
+
+// Quit when all windows are closed.
+app.on('window-all-closed', function () {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', function () {
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (mainWindow === null) {
+    createWindow()
+  }
+})
+
+// In this file you can include the rest of your app's specific main process
+/ 
+    </code>
+                    </pre>
+                </section>
+
+
+
+
+                <section>
+                    <h4>index.html</h4>
+<pre><code>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello World!</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+<!-- All of the Node.js APIs are available in this renderer process. -->
+We are using node <script>document.write(process.versions.node)</script>,
+Chromium <script>document.write(process.versions.chrome)</script>,
+and Electron <script>document.write(process.versions.electron)</script>.
+</body>
+
+<script>
+// You can also require other files to run in this process
+require('./renderer.js')
+</script>
+</html>
+</code></pre>
+
+                </section>
+
+
+                <section>
+
+                    <h4>package.json</h4>
+                    <pre><code>
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron/electron-quick-start.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
+}
+                    </code></pre>
+
+                </section>
+
+
+                <section>
+                
+                    <pre><code>
+#起動
+$ node_modules/.bin/electron ./
+                    
+#ドロップ形式
+$ node_modules/.bin/electron
+                    </code></pre>
+        
+            </section>
+
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
