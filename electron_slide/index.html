@@ -214,18 +214,38 @@ require('./renderer.js')
                 </section>
 
 
+
                 <section>
-                
+
                     <pre><code>
 #起動
 $ node_modules/.bin/electron ./
-                    
+
 #ドロップ形式
 $ node_modules/.bin/electron
                     </code></pre>
-        
-            </section>
 
+                </section>
+
+
+
+                <section>
+
+                    <h4>パッケージ化</h4>
+                    <pre><code>
+#electron-packagerのインストール
+$ npm i electron-packager -g
+
+#バージョン確認
+$ node_modules/.bin/electron -v
+v1.2.6
+
+#パッケージ化
+$ electron-packager ./sample sample --platform=darwin,win32 --arch=x64 --version=1.2.6
+
+                    </code></pre>
+
+                </section>
 
 
 			</div>
